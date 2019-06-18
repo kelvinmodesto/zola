@@ -2,6 +2,7 @@ import cookieParser from 'cookie-parser';
 import express from 'express';
 import httpErrors from 'http-errors';
 import morgan from 'morgan';
+import * as io from 'socket.io';
 
 const app = express();
 
