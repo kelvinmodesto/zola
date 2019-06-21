@@ -4,6 +4,7 @@ import httpErrors from 'http-errors';
 import morgan from 'morgan';
 import * as io from 'socket.io';
 
+import quoteRouter from './api/quoteRouter';
 const app = express();
 
 app.use(morgan('dev'));
