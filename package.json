@@ -7,8 +7,9 @@
     "build": "./node_modules/.bin/tsc",
     "clean": "./node_modules/.bin/rimraf dist/",
     "lint": "./node_modules/.bin/tslint -c tslint.json src/**/*.ts",
-    "rebuild": "npm run clean && npm run build",
+    "rebuild": "yarn run clean && yarn run build",
     "start": "./node_modules/.bin/nodemon --exec node ./dist/bin/server",
+    "restart": "yarn run rebuild && yarn run start",
     "test": "./node_modules/.bin/mocha ./dist/tests/**/*.spec.js"
   },
   "repository": {
