@@ -2,7 +2,7 @@ import cookieParser from 'cookie-parser';
 import express from 'express';
 import httpErrors from 'http-errors';
 import morgan from 'morgan';
-import * as io from 'socket.io';
+import path from 'path';
 
 import quoteRouter from './api/quoteRouter';
 const app = express();
@@ -12,8 +12,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-// app.use(express.static(path.join(__dirname, 'public')));
-// app.use('/api/v1/products', productRouter());
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/quote', quoteRouter());
 
 // catch 404 and forward to error handler
 app.use((req: any, res: any, next: any): any => next(httpErrors(404)));

@@ -6,9 +6,9 @@ import { ContextStrategy as Context } from '../base/contextStrategy';
 export class MongoDBStrategy extends Context {
   public static buildConnectionString() {
     dotenv.config();
-    return `${process.env.DB_MONGO}://${process.env.DB_USER_MONGO}:\
-          ${process.env.DB_PASS_MONGO}@${process.env.DB_HOST_MONGO}:\
-          ${process.env.DB_PORT_MONGO}/${process.env.DB_NAME_MONGO}`;
+    return `${process.env.DB_MONGO}://${process.env.DB_USER_MONGO}:`
+    + `${process.env.DB_PASS_MONGO}@${process.env.DB_HOST_MONGO}:`
+    + `${process.env.DB_PORT_MONGO}/${process.env.DB_NAME_MONGO}`;
   }
 
   public static connect(): any {
