@@ -18,7 +18,7 @@ export class QuoteController {
     dotenv.config();
     this.router.get('/quote', (req: any, res: any, next: any) => {
       try {
-        console.log(req.query);
+        console.log('@@@quote',req.query);
       } catch (error) {
         next(error);
       }

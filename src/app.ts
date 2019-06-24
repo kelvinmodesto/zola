@@ -2,9 +2,10 @@ import cookieParser from 'cookie-parser';
 import express from 'express';
 import httpErrors from 'http-errors';
 import morgan from 'morgan';
-import path from 'path';
 
-import quoteRouter from './api/quoteRouter';
+import quoteRouter from './api/quote/quoteRouter';
+import symbolRouter from './api/symbol/symbolRouter';
+
 const app = express();
 
 app.use(morgan('dev'));
@@ -12,8 +13,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use(express.static(path.join(__dirname, 'public')));
-app.use('/quote', quoteRouter());
+app.use('/', quoteRouter());
+app.use('/', symbolRouter());
 
 // catch 404 and forward to error handler
 app.use((req: any, res: any, next: any): any => next(httpErrors(404)));
