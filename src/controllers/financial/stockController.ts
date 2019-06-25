@@ -21,8 +21,14 @@ export class SymbolController {
       }
     });
   }
-  // public createSymbol() {
-  //
-  // }
+  public createSymbol() {
+    this.router.post('/symbol', async (req, res, next) => {
+      try {
+        const { name }
+      } catch(error) {
+        next(error);
+      }
+    });
+  }
 
 }

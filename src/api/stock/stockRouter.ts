@@ -8,7 +8,7 @@ import { MongoDBStrategy as MongoDB } from '../../db/mongodb/mongoDBStrategy';
 import { SymbolController } from '../../controllers/financial/symbolController';
 
 // Model
-import symbol from '../../models/symbol';
+import symbol from '../../models/stock';
 
 const context = new Context(new MongoDB(MongoDB.connect(), symbol));
 const symbolRouter = () => {

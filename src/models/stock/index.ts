@@ -1,8 +1,12 @@
 import mongoose from 'mongoose';
 
 const schema = new mongoose.Schema({
+  description: {
+    required: false,
+    type: String,
+  },
   insertedAt: {
-    required: true,
+    default: new Date(),
     type: Date,
   },
   name: {
@@ -13,12 +17,8 @@ const schema = new mongoose.Schema({
     required: true,
     type: String,
   },
-  type: {
-    required: true,
-    type: String,
-  },
 });
 
-const symbol = mongoose.model('Symbol', schema);
+const symbol = mongoose.model('symbol', schema);
 
 export default symbol;
