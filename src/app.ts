@@ -3,8 +3,9 @@ import express from 'express';
 import httpErrors from 'http-errors';
 import morgan from 'morgan';
 
+// Routers list
 import quoteRouter from './api/quote/quoteRouter';
-import symbolRouter from './api/symbol/symbolRouter';
+import stockRouter from './api/stock/stockRouter';
 
 const app = express();
 
@@ -14,7 +15,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use('/', quoteRouter());
-app.use('/', symbolRouter());
+app.use('/', stockRouter());
 
 // catch 404 and forward to error handler
 app.use((req: any, res: any, next: any): any => next(httpErrors(404)));

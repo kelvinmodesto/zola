@@ -1,4 +1,6 @@
-export class SymbolController {
+import RequestError from '../../utils/exceptions/RequestErrorException';
+
+export class StockController {
   public router: any;
   public context: any;
   constructor(router: any, context: any) {
@@ -9,23 +11,33 @@ export class SymbolController {
   public init() {
     // methods list
     // this.createSymbol();
-    this.listSymbols();
+    this.listStocks();
+    this.createStock();
     return this.router;
   }
-  public listSymbols() {
-    this.router.get('/symbol', (req: any, res: any, next: any) => {
+  public listStocks() {
+    this.router.get('/stock', (req: any, res: any, next: any) => {
       try {
-        console.log('@@@symbol',req.query);
+        console.log('@@@stock',req.query);
       } catch (error) {
         next(error);
       }
     });
   }
-  public createSymbol() {
-    this.router.post('/symbol', async (req, res, next) => {
+  public createStock() {
+    this.router.post('/stock', async (req: any, res: any, next: any) => {
       try {
-        const { name }
-      } catch(error) {
+        const { name, symbol, description = '' } = await this.context.create(req.query);
+        if (res.status(200)) {
+          res.send({
+            description,
+            name,
+            symbol,
+          });
+        } else {
+          throw new RequestError();
+        }
+      } catch (error) {
         next(error);
       }
     });

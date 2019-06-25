@@ -5,16 +5,16 @@ import { ContextStrategy as Context } from '../../db/base/contextStrategy';
 import { MongoDBStrategy as MongoDB } from '../../db/mongodb/mongoDBStrategy';
 
 // Controller
-import { SymbolController } from '../../controllers/financial/symbolController';
+import { StockController } from '../../controllers/financial/stockController';
 
 // Model
-import symbol from '../../models/stock';
+import stock from '../../models/stock';
 
-const context = new Context(new MongoDB(MongoDB.connect(), symbol));
-const symbolRouter = () => {
-  const symbolController = new SymbolController(Router(), context);
-  symbolController.router.use('/symbol', symbolController.init());
-  return symbolController.router;
+const context = new Context(new MongoDB(MongoDB.connect(), stock));
+const stockRouter = () => {
+  const stockController = new StockController(Router(), context);
+  stockController.router.use('/stock', stockController.init());
+  return stockController.router;
 };
 
-export default symbolRouter;
+export default stockRouter;
