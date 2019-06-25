@@ -19,6 +19,6 @@ const schema = new mongoose.Schema({
   },
 });
 
-const symbol = mongoose.model('symbol', schema);
+const symbol = mongoose.model('stock', schema);
 
 export default symbol;

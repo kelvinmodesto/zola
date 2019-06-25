@@ -4,6 +4,6 @@ const schema = new mongoose.Schema({
 
 });
 
-const quote = mongoose.model('Quote', schema);
+const quote = mongoose.model('quote', schema);
 
 export default quote;
