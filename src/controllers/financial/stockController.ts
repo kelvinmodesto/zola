@@ -1,4 +1,6 @@
-import RequestError from '../../utils/exceptions/RequestErrorException';
+import { pick } from 'lodash';
+
+import RequestErrorException from '../../utils/exceptions/RequestErrorException';
 
 export class StockController {
   public router: any;
@@ -16,9 +18,16 @@ export class StockController {
     return this.router;
   }
   public listStocks() {
-    this.router.get('/stock', (req: any, res: any, next: any) => {
+    this.router.get('/stock', async (req: any, res: any, next: any) => {
       try {
-        console.log('@@@stock',req.query);
+        const { name, symbol, description } = req.query;
+        const list = await this.context.read(pick({ name, symbol, description }));
+
+        if (res.status(200)) {
+          res.send(list);
+        } else {
+          throw new RequestErrorException();
+        }
       } catch (error) {
         next(error);
       }
@@ -35,7 +44,7 @@ export class StockController {
             symbol,
           });
         } else {
-          throw new RequestError();
+          throw new RequestErrorException();
         }
       } catch (error) {
         next(error);
