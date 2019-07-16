@@ -12,9 +12,9 @@ export class StockController {
 
   public init() {
     // methods list
-    // this.createSymbol();
     this.listStocks();
     this.createStock();
+
     return this.router;
   }
   public listStocks() {
